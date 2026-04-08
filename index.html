@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Bella Cucina</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">La Bella Cucina</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Authentic Italian Cuisine</h1>
+      <p>Fresh ingredients, timeless recipes, unforgettable flavors.</p>
+      <a href="#menu" class="btn">Explore Menu</a>
+      <a href="#contact" class="btn btn-outline">Reserve a Table</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2>A Family Tradition Since 1987</h2>
+        <p>
+          La Bella Cucina was founded by the Rossi family, bringing the heart of
+          Tuscany to your table. Every dish is crafted with love, using recipes
+          passed down through generations and the freshest local produce.
+        </p>
+        <p>
+          Our chefs travel to Italy each year to stay inspired and ensure every
+          bite transports you to the rolling hills of the Italian countryside.
+        </p>
+        <div class="stats">
+          <div class="stat"><strong>38+</strong><span>Years of Excellence</span></div>
+          <div class="stat"><strong>120+</strong><span>Menu Items</span></div>
+          <div class="stat"><strong>50k+</strong><span>Happy Guests</span></div>
+        </div>
+      </div>
+      <div class="about-image">
+        <div class="image-placeholder">
+          <span>&#127859;</span>
+          <p>Est. 1987</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="menu section">
+    <div class="container">
+      <span class="section-label">Our Menu</span>
+      <h2>Taste the Tradition</h2>
+
+      <div class="menu-tabs">
+        <button class="tab-btn active" data-tab="starters">Starters</button>
+        <button class="tab-btn" data-tab="mains">Main Course</button>
+        <button class="tab-btn" data-tab="desserts">Desserts</button>
+        <button class="tab-btn" data-tab="drinks">Drinks</button>
+      </div>
+
+      <div class="menu-grid" id="menu-grid"></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="gallery section">
+    <div class="container">
+      <span class="section-label">Gallery</span>
+      <h2>From Our Kitchen</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="--bg: #c0392b;">&#127837;</div>
+        <div class="gallery-item" style="--bg: #e67e22;">&#127840;</div>
+        <div class="gallery-item large" style="--bg: #27ae60;">&#127829;</div>
+        <div class="gallery-item" style="--bg: #8e44ad;">&#127843;</div>
+        <div class="gallery-item large" style="--bg: #2980b9;">&#127863;</div>
+        <div class="gallery-item" style="--bg: #d35400;">&#127856;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials section">
+    <div class="container">
+      <span class="section-label">Reviews</span>
+      <h2>What Our Guests Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"The best pasta I've ever had outside of Italy. The truffle risotto is absolutely divine!"</p>
+          <div class="reviewer">— Sofia M.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Wonderful ambiance, attentive staff, and food that makes you want to come back every week."</p>
+          <div class="reviewer">— James T.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We celebrated our anniversary here and it was magical. The tiramisu alone is worth the trip."</p>
+          <div class="reviewer">— Priya & Raj K.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Reservation -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="contact-info">
+        <span class="section-label">Visit Us</span>
+        <h2>Reserve Your Table</h2>
+        <ul class="info-list">
+          <li><span>&#128205;</span> 42 Via Roma, Florence District, NY 10001</li>
+          <li><span>&#128222;</span> (212) 555-0198</li>
+          <li><span>&#9993;</span> hello@labellacucina.com</li>
+          <li><span>&#128336;</span> Mon–Fri: 11am – 10pm &nbsp;|&nbsp; Sat–Sun: 10am – 11pm</li>
+        </ul>
+      </div>
+      <form class="reservation-form" id="reservation-form">
+        <h3>Book a Table</h3>
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-row">
+          <input type="date" id="res-date" required />
+          <input type="time" id="res-time" required />
+        </div>
+        <div class="form-row">
+          <select required>
+            <option value="" disabled selected>Number of Guests</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5+</option>
+          </select>
+        </div>
+        <textarea placeholder="Special requests (optional)"></textarea>
+        <button type="submit" class="btn">Confirm Reservation</button>
+        <p class="form-success" id="form-success">Thank you! We will confirm your reservation shortly.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">La Bella Cucina</div>
+      <p>&copy; 2026 La Bella Cucina. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Yelp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
