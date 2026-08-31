@@ -1,178 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Bella Cucina</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Place of Mind — Child Psychiatry & Neuropsychology</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+<style>
+:root {
+  --cream: #F4EFE6;
+  --navy: #1E3A4A;
+  --navy-mid: #2C4F63;
+  --slate: #3D6272;
+  --gold: #B8922A;
+  --gold-light: #C9A44A;
+  --text-dark: #1A2B35;
+  --text-mid: #3A4E58;
+  --text-light: #6B7C85;
+  --white: #FFFFFF;
+  --blue: #5B8FA8;
+  --blue-shadow: #8DBDD3;
+  --sky-url: url('http://ronalds422.sg-host.com/wp-content/uploads/2026/03/GG_blue_sky_with_a_few_clouds_pastel_blue_-tile_-profile_wso3_d34c0e32-6e36-4921-bd64-b845faf2bf0c-1.png');
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Lato', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--text-dark); overflow-x: hidden; background: var(--cream); }
+
+.hero img, .hero .hero-bg-img, .elementor-widget-image img { border-radius: 0 !important; }
+
+.hero-img-wrap {
+  position: absolute !important;
+  right: 0 !important; top: 0 !important; bottom: 0 !important;
+  width: 64% !important; height: 100% !important;
+  overflow: hidden !important;
+  border-radius: 0 !important;
+}
+
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.72s cubic-bezier(0.22,1,0.36,1), transform 0.72s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+.stagger > * {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.stagger.visible > *:nth-child(1) { opacity:1;transform:none;transition-delay:0.05s }
+.stagger.visible > *:nth-child(2) { opacity:1;transform:none;transition-delay:0.14s }
+.stagger.visible > *:nth-child(3) { opacity:1;transform:none;transition-delay:0.23s }
+.stagger.visible > *:nth-child(4) { opacity:1;transform:none;transition-delay:0.32s }
+.stagger.visible > *:nth-child(5) { opacity:1;transform:none;transition-delay:0.41s }
+
+.btn-blue, .btn-navy {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 36px;
+  font-family: var(--font-sans); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  text-decoration: none; border-radius: 6px;
+  transition: box-shadow 0.16s ease, transform 0.16s ease, background 0.18s;
+}
+.btn-blue::after, .btn-navy::after { content: '→'; font-size: 16px; line-height: 1; transition: transform 0.16s ease; }
+.btn-blue:hover::after, .btn-navy:hover::after { transform: translateX(5px); }
+.btn-blue { background: var(--blue); color: #fff; border: 2px solid var(--blue); box-shadow: 5px 5px 0 0 var(--blue-shadow); }
+.btn-blue:hover { box-shadow: 2px 2px 0 0 var(--blue-shadow); transform: translate(3px,3px); background: #4a7d94; border-color: #4a7d94; }
+.btn-blue:active { box-shadow: none; transform: translate(5px,5px); }
+.btn-navy { background: #1F3A4B; color: #fff; border: 2px solid #1F3A4B; box-shadow: 5px 5px 0 0 rgba(31,58,75,0.38); }
+.btn-navy:hover { box-shadow: 2px 2px 0 0 rgba(31,58,75,0.38); transform: translate(3px,3px); background: #2c4f63; border-color: #2c4f63; }
+.btn-navy:active { box-shadow: none; transform: translate(5px,5px); }
+
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.section-eyebrow::before, .section-eyebrow::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+.section-title { font-family: var(--font-serif); font-size: 40px; font-weight: 700; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--text-dark); }
+.section-title em { font-style: italic; font-weight: 400; color: var(--navy-mid); }
+.section-subtitle { font-family: var(--font-serif); font-size: 19px; font-style: italic; color: var(--slate); margin-bottom: 36px; }
+.gold-rule { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 36px; border-radius: 2px; }
+.section-body { max-width: 680px; margin: 0 auto 20px; font-size: 16px; line-height: 1.8; color: var(--text-mid); }
+.section-body strong { color: var(--text-dark); font-weight: 700; }
+.section-closing { max-width: 580px; margin: 20px auto 0; font-size: 16px; line-height: 1.72; color: var(--text-mid); font-style: italic; }
+.cta-center { display: flex; justify-content: center; }
+
+.hero {
+  position: relative !important; overflow: hidden !important; min-height: 640px;
+  display: flex; align-items: stretch;
+  background: linear-gradient(165deg, var(--cream) 0%, var(--cream) 72%, #ece5d6 100%);
+  border-radius: 0 !important;
+}
+.hero-bg-img {
+  position: absolute !important; right: 0 !important; top: 0 !important; bottom: 0 !important;
+  width: 100% !important; height: 100% !important; min-height: 100% !important;
+  object-fit: cover !important; object-position: left center !important;
+  mask-image: linear-gradient(to left, black 55%, transparent 88%);
+  -webkit-mask-image: linear-gradient(to left, black 55%, transparent 88%);
+  border-radius: 0 !important; display: block !important;
+}
+.hero-content {
+  position: relative; z-index: 2; padding: 100px 60px 110px 80px;
+  max-width: 580px; display: flex; flex-direction: column; justify-content: center;
+}
+.hero-eyebrow-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 22px;
+}
+.hero-eyebrow-tag::before { content: ''; width: 24px; height: 1.5px; background: var(--gold); }
+.hero-headline { font-family: var(--font-serif); font-size: 52px; font-weight: 700; line-height: 1.1; color: var(--text-dark); margin-bottom: 20px; letter-spacing: -0.025em; }
+.hero-headline em { font-style: italic; font-weight: 400; color: var(--navy-mid); }
+.hero-sub { font-size: 17px; line-height: 1.62; color: var(--text-mid); margin-bottom: 20px; max-width: 420px; }
+.hero-credibility { font-size: 13.5px; line-height: 1.7; color: var(--text-mid); padding-left: 16px; border-left: 2.5px solid var(--gold); margin-bottom: 38px; max-width: 400px; }
+
+.trust-bar { background: var(--navy); padding: 18px 48px; display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; position: relative; z-index: 3; }
+.trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.85); font-size: 13px; white-space: nowrap; }
+.trust-check { color: var(--gold-light); font-size: 15px; }
+.trust-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+
+.what-we-help {
+  padding: 110px 60px 130px; text-align: center;
+  background: linear-gradient(180deg, rgba(218,234,243,0.90) 0%, rgba(224,238,248,0.86) 50%, rgba(235,244,250,0.84) 100%), var(--sky-url) center center / cover fixed;
+}
+.what-we-help .section-title { color: var(--navy); }
+.what-we-help .section-eyebrow { color: var(--gold); }
+.help-intro { max-width: 660px; margin: 0 auto 12px; font-size: 16px; line-height: 1.78; color: var(--navy-mid); }
+.help-note { font-size: 15px; color: var(--slate); font-style: italic; margin-bottom: 48px; }
+.help-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; max-width: 1060px; margin: 0 auto 18px; }
+.help-grid-bottom { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 800px; margin: 0 auto 48px; }
+.help-card {
+  background: rgba(255,255,255,0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px; padding: 26px 18px 22px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.65); box-shadow: 0 4px 20px rgba(44,79,99,0.10);
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s;
+  display: flex; flex-direction: column; align-items: center;
+}
+.help-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(44,79,99,0.18); }
+.help-icon { font-size: 36px; color: var(--gold); margin-bottom: 12px; line-height: 1; }
+.help-card-title { font-family: var(--font-serif); font-size: 14.5px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.3; }
+.help-card-body { font-size: 12px; line-height: 1.65; color: var(--text-light); }
+
+.meet-doctors {
+  padding: 110px 60px 130px; text-align: center;
+  background: linear-gradient(180deg, rgba(235,244,250,0.84) 0%, rgba(255,255,255,0.80) 25%, rgba(255,255,255,0.80) 65%, rgba(244,239,230,0.95) 88%, #F4EFE6 100%), var(--sky-url) center center / cover fixed;
+}
+.doctors-row { display: flex; justify-content: center; gap: 36px; margin: 52px auto 0; max-width: 860px; flex-wrap: wrap; }
+.doctor-card {
+  background: rgba(255,255,255,0.84); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px; padding: 32px 28px 28px; width: 300px; text-align: center;
+  border: 1px solid rgba(255,255,255,0.65); border-top: 3px solid var(--gold);
+  box-shadow: 0 8px 40px rgba(30,58,74,0.12);
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+}
+.doctor-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(30,58,74,0.18); }
+.doctor-photo-wrap { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; border: 3px solid var(--gold); box-shadow: 0 6px 24px rgba(30,58,74,0.18); }
+.doctor-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.doctor-name { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+.doctor-cred { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.doctor-bio { font-size: 13.5px; line-height: 1.68; color: var(--text-mid); margin-bottom: 20px; }
+.doctor-uni-logo {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(30,58,74,0.10);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.doctor-uni-logo img {
+  max-height: 44px;
+  max-width: 160px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.doctor-card:hover .doctor-uni-logo img { opacity: 1; }
+
+.why-choose { padding: 110px 60px 130px; text-align: center; background: var(--cream); }
+.why-intro { max-width: 620px; margin: 0 auto 52px; font-size: 16.5px; line-height: 1.75; color: var(--text-mid); }
+.why-row-top { display: flex; justify-content: center; gap: 22px; max-width: 700px; margin: 0 auto 22px; flex-wrap: wrap; }
+.why-row-bottom { display: flex; justify-content: center; gap: 22px; max-width: 1040px; margin: 0 auto 56px; flex-wrap: wrap; }
+.why-card {
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px; padding: 30px 26px; width: 308px; text-align: left;
+  border: 1px solid rgba(255,255,255,0.75); border-top: 2.5px solid var(--gold);
+  box-shadow: 0 4px 24px rgba(30,58,74,0.08);
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; flex-shrink: 0;
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30,58,74,0.14); }
+.why-card-icon { font-size: 30px; color: var(--gold); margin-bottom: 16px; display: block; line-height: 1; }
+.why-card-title { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+.why-card-body { font-size: 13.5px; line-height: 1.7; color: var(--text-mid); }
+
+.process {
+  padding: 110px 60px 130px; text-align: center;
+  background: linear-gradient(180deg, rgba(224,238,248,0.86) 0%, rgba(230,242,250,0.84) 55%, rgba(244,239,230,0.95) 88%, #F4EFE6 100%), var(--sky-url) center center / cover fixed;
+}
+.process-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; max-width: 1020px; margin: 60px auto 20px; position: relative; }
+.process-connector { position: absolute; top: 26px; height: 2px; background: linear-gradient(to right, var(--blue), var(--blue-shadow), var(--blue)); opacity: 0.5; z-index: 0; pointer-events: none; border-radius: 2px; }
+.process-step { position: relative; z-index: 1; text-align: center; }
+.step-number { width: 52px; height: 52px; background: var(--blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(91,143,168,0.4); position: relative; z-index: 2; transition: transform 0.3s, box-shadow 0.3s; }
+.process-step:hover .step-number { transform: scale(1.1); box-shadow: 0 8px 24px rgba(91,143,168,0.5); }
+.step-title { font-family: var(--font-serif); font-size: 19px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.3; }
+.step-body { font-size: 14px; line-height: 1.75; color: var(--text-mid); margin-bottom: 10px; }
+.process-reinforcer { max-width: 520px; margin: 50px auto 0; font-family: var(--font-serif); font-size: 22px; font-style: italic; color: var(--navy-mid); line-height: 1.5; opacity: 0.85; }
+
+.testimonials { padding: 110px 60px 130px; text-align: center; background: var(--cream); }
+.testimonial-intro { max-width: 620px; margin: 0 auto 52px; font-size: 16px; line-height: 1.75; color: var(--text-mid); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; max-width: 1060px; margin: 0 auto; }
+.testimonial-card {
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px; padding: 32px 26px; text-align: left;
+  border: 1px solid rgba(255,255,255,0.72); box-shadow: 0 4px 24px rgba(30,58,74,0.09);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s;
+}
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30,58,74,0.16); }
+.quote-mark { font-family: var(--font-serif); font-size: 56px; color: var(--gold); line-height: 0.6; margin-bottom: 8px; }
+.testimonial-text { font-size: 14.5px; line-height: 1.78; color: var(--text-mid); font-style: italic; flex: 1; }
+.testimonial-attr { font-size: 12.5px; font-weight: 700; color: var(--text-light); letter-spacing: 0.05em; border-top: 1px solid rgba(30,58,74,0.1); padding-top: 14px; }
+
+.philosophy { padding: 110px 60px 130px; text-align: center; background: var(--navy); }
+.philosophy .section-title { color: var(--white); }
+.philosophy .section-title em { color: #8DBDD3; font-style: italic; font-weight: 400; }
+.philosophy .section-eyebrow { color: var(--gold-light); }
+.philosophy .section-eyebrow::before, .philosophy .section-eyebrow::after { background: var(--gold-light); }
+.philosophy .gold-rule { background: var(--gold-light); }
+.philosophy-body { max-width: 680px; margin: 0 auto 22px; font-size: 16.5px; line-height: 1.85; color: rgba(255,255,255,0.78); }
+
+.final-cta { background: var(--cream); padding: 110px 60px 90px; text-align: center; position: relative; }
+.final-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(91,143,168,0.07) 0%, transparent 70%); pointer-events: none; }
+.final-cta-headline { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: var(--text-dark); max-width: 700px; margin: 0 auto 42px; line-height: 1.28; letter-spacing: -0.02em; position: relative; }
+.final-cta-headline em { font-style: italic; font-weight: 400; color: var(--navy-mid); }
+.cta-buttons { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; position: relative; }
+
+@media (max-width: 1024px) {
+  .section-title { font-size: 34px; }
+  .hero-headline { font-size: 44px; }
+  .hero-content { padding: 80px 48px 90px; max-width: 100%; }
+  .hero-img-wrap { width: 52% !important; }
+  .meet-doctors, .why-choose, .what-we-help, .process, .testimonials, .philosophy, .final-cta { padding-left: 40px; padding-right: 40px; }
+  .help-grid { grid-template-columns: repeat(2,1fr); }
+  .help-grid-bottom { grid-template-columns: repeat(2,1fr); max-width: 580px; }
+  .why-card { width: calc(50% - 11px); flex-shrink: 1; }
+  .process-steps { gap: 24px; }
+  .testimonials-grid { grid-template-columns: repeat(2,1fr); gap: 18px; max-width: 700px; }
+  .testimonials-grid > *:nth-child(3) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+  .trust-bar { gap: 20px; }
+  .trust-divider { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: auto; }
+  .hero-img-wrap { display: none !important; }
+  .hero-content { padding: 72px 24px 80px; max-width: 100%; }
+  .hero-headline { font-size: 34px; }
+  .hero-sub { font-size: 15px; }
+  .trust-bar { padding: 14px 20px; gap: 10px; }
+  .trust-divider { display: none; }
+  .trust-item { font-size: 12.5px; }
+  .what-we-help, .meet-doctors, .why-choose, .process, .testimonials, .philosophy, .final-cta { padding: 72px 20px 88px; }
+  .section-title { font-size: 28px; }
+  .section-eyebrow { font-size: 10px; }
+  .doctors-row { gap: 20px; }
+  .doctor-card { width: 100%; max-width: 360px; }
+  .why-row-top, .why-row-bottom { flex-direction: column; align-items: center; gap: 16px; }
+  .why-card { width: 100%; max-width: 420px; }
+  .why-row-bottom { margin-bottom: 36px; }
+  .help-grid { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 100%; }
+  .help-grid-bottom { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 100%; }
+  .process-steps { grid-template-columns: 1fr; gap: 32px; }
+  .process-connector { display: none; }
+  .process-reinforcer { font-size: 18px; }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .testimonials-grid > *:nth-child(3) { grid-column: 1; max-width: 100%; }
+  .cta-buttons { flex-direction: column; align-items: center; gap: 14px; }
+  .final-cta-headline { font-size: 26px; }
+  .btn-blue, .btn-navy { padding: 14px 26px; font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .hero-headline { font-size: 28px; }
+  .section-title { font-size: 24px; }
+  .help-grid, .help-grid-bottom { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-brand">La Bella Cucina</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-  </nav>
-
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Authentic Italian Cuisine</h1>
-      <p>Fresh ingredients, timeless recipes, unforgettable flavors.</p>
-      <a href="#menu" class="btn">Explore Menu</a>
-      <a href="#contact" class="btn btn-outline">Reserve a Table</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img-wrap">
+    <img class="hero-bg-img" src="http://ronalds422.sg-host.com/wp-content/uploads/2026/04/Father-and-a-daughter.png" alt="Father playing with daughter">
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow-tag reveal">Still searching for answers? You're not alone.</p>
+    <h1 class="hero-headline reveal" style="transition-delay:0.08s">
+      You Don't Have to <em>Figure Your Child Out</em> Alone
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:0.18s">Finally understand your child—and know what to do next.</p>
+    <p class="hero-credibility reveal" style="transition-delay:0.28s">Led by Harvard-trained Dr. Schwartz &amp; Columbia-trained Dr. Racanello — two specialists, one coordinated plan for your child.</p>
+    <div class="reveal" style="transition-delay:0.38s">
+      <a href="https://ronalds422.sg-host.com/contact/" class="btn-navy">Schedule a Free Consultation</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About -->
-  <section id="about" class="about section">
-    <div class="container">
-      <div class="about-text">
-        <span class="section-label">Our Story</span>
-        <h2>A Family Tradition Since 1987</h2>
-        <p>
-          La Bella Cucina was founded by the Rossi family, bringing the heart of
-          Tuscany to your table. Every dish is crafted with love, using recipes
-          passed down through generations and the freshest local produce.
-        </p>
-        <p>
-          Our chefs travel to Italy each year to stay inspired and ensure every
-          bite transports you to the rolling hills of the Italian countryside.
-        </p>
-        <div class="stats">
-          <div class="stat"><strong>38+</strong><span>Years of Excellence</span></div>
-          <div class="stat"><strong>120+</strong><span>Menu Items</span></div>
-          <div class="stat"><strong>50k+</strong><span>Happy Guests</span></div>
-        </div>
-      </div>
-      <div class="about-image">
-        <div class="image-placeholder">
-          <span>&#127859;</span>
-          <p>Est. 1987</p>
-        </div>
-      </div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-check">✓</span> Harvard &amp; Columbia Trained</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span> Comprehensive Psychiatric &amp; Neuropsychological Evaluations</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span> Coordinated Team Care</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span> Accepting New Patients</div>
+</div>
+
+<!-- WHAT WE HELP -->
+<section class="what-we-help">
+  <p class="section-eyebrow reveal">Areas of Expertise</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">What <em>We Help</em> With</h2>
+  <div class="gold-rule reveal" style="transition-delay:0.15s"></div>
+  <p class="help-intro reveal" style="transition-delay:0.2s">Every child presents differently. We focus on <strong>understanding the "why"</strong> behind the struggles—not just labeling symptoms.</p>
+  <p class="help-note reveal" style="transition-delay:0.25s">You may not have a clear diagnosis—and that's okay. We help you understand what's really going on.</p>
+  <div class="help-grid stagger">
+    <div class="help-card">
+      <i class="uil uil-focus-target help-icon"></i>
+      <div class="help-card-title">Attention &amp; Focus</div>
+      <p class="help-card-body">Struggling to stay on task, finish homework without constant reminders, or manage time and responsibilities.</p>
     </div>
-  </section>
-
-  <!-- Menu -->
-  <section id="menu" class="menu section">
-    <div class="container">
-      <span class="section-label">Our Menu</span>
-      <h2>Taste the Tradition</h2>
-
-      <div class="menu-tabs">
-        <button class="tab-btn active" data-tab="starters">Starters</button>
-        <button class="tab-btn" data-tab="mains">Main Course</button>
-        <button class="tab-btn" data-tab="desserts">Desserts</button>
-        <button class="tab-btn" data-tab="drinks">Drinks</button>
-      </div>
-
-      <div class="menu-grid" id="menu-grid"></div>
+    <div class="help-card">
+      <i class="uil uil-heart-rate help-icon"></i>
+      <div class="help-card-title">Anxiety</div>
+      <p class="help-card-body">Constant worry, avoiding school or social situations, needing reassurance, or feeling overwhelmed by everyday things.</p>
     </div>
-  </section>
-
-  <!-- Gallery -->
-  <section id="gallery" class="gallery section">
-    <div class="container">
-      <span class="section-label">Gallery</span>
-      <h2>From Our Kitchen</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item" style="--bg: #c0392b;">&#127837;</div>
-        <div class="gallery-item" style="--bg: #e67e22;">&#127840;</div>
-        <div class="gallery-item large" style="--bg: #27ae60;">&#127829;</div>
-        <div class="gallery-item" style="--bg: #8e44ad;">&#127843;</div>
-        <div class="gallery-item large" style="--bg: #2980b9;">&#127863;</div>
-        <div class="gallery-item" style="--bg: #d35400;">&#127856;</div>
-      </div>
+    <div class="help-card">
+      <i class="uil uil-puzzle-piece help-icon"></i>
+      <div class="help-card-title">Autism Spectrum</div>
+      <p class="help-card-body">Difficulty with social interactions, rigidity with routines, sensory sensitivities, or challenges with communication.</p>
     </div>
-  </section>
+    <div class="help-card">
+      <i class="uil uil-cloud-drizzle help-icon"></i>
+      <div class="help-card-title">Depression &amp; Mood</div>
+      <p class="help-card-body">Low mood, irritability, pulling away from family or friends, or losing interest in things they used to enjoy.</p>
+    </div>
+  </div>
+  <div class="help-grid-bottom stagger">
+    <div class="help-card">
+      <i class="uil uil-clipboard-alt help-icon"></i>
+      <div class="help-card-title">Executive Functioning</div>
+      <p class="help-card-body">Trouble getting started, staying organized, following through, or managing daily tasks independently.</p>
+    </div>
+    <div class="help-card">
+      <i class="uil uil-book-open help-icon"></i>
+      <div class="help-card-title">Learning Differences &amp; Twice-Exceptional</div>
+      <p class="help-card-body">Bright, capable children who seem like they should be doing well—but struggle with reading, writing, math, or inconsistent performance.</p>
+    </div>
+    <div class="help-card">
+      <i class="uil uil-layer-group help-icon"></i>
+      <div class="help-card-title">Complex or Unclear Presentations</div>
+      <p class="help-card-body">When multiple challenges overlap—and it's hard to understand what's really going on or where to start.</p>
+    </div>
+  </div>
+  <p class="reveal" style="font-style:italic;color:var(--navy-mid);font-size:15px;margin-bottom:40px;transition-delay:0.2s">If you're unsure what your child is struggling with, we can help clarify that.</p>
+  <div class="cta-center reveal" style="transition-delay:0.3s">
+    <a href="https://ronalds422.sg-host.com/contact/" class="btn-navy">Talk Through Your Concerns</a>
+  </div>
+</section>
 
-  <!-- Testimonials -->
-  <section class="testimonials section">
-    <div class="container">
-      <span class="section-label">Reviews</span>
-      <h2>What Our Guests Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"The best pasta I've ever had outside of Italy. The truffle risotto is absolutely divine!"</p>
-          <div class="reviewer">— Sofia M.</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Wonderful ambiance, attentive staff, and food that makes you want to come back every week."</p>
-          <div class="reviewer">— James T.</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"We celebrated our anniversary here and it was magical. The tiramisu alone is worth the trip."</p>
-          <div class="reviewer">— Priya & Raj K.</div>
-        </div>
+<!-- MEET DOCTORS -->
+<section class="meet-doctors">
+  <p class="section-eyebrow reveal">Meet Dr. Schwartz &amp; Dr. Racanello</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">Two Experts <em>Working Together</em> for Your Child</h2>
+  <p class="section-subtitle reveal" style="transition-delay:0.15s">One Team. One Clear Plan.</p>
+  <div class="gold-rule reveal" style="transition-delay:0.2s"></div>
+  <div class="doctors-row stagger">
+    <div class="doctor-card">
+      <div class="doctor-photo-wrap">
+        <img src="http://ronalds422.sg-host.com/wp-content/uploads/2026/03/schwartz-photo-5.jpg" alt="Dr. Schwartz">
+      </div>
+      <div class="doctor-name">Dr. Schwartz</div>
+      <div class="doctor-cred">Harvard-Trained &bull; Child Psychiatry</div>
+      <p class="doctor-bio">Board-certified child and adolescent psychiatrist with expertise in comprehensive psychiatric evaluation and thoughtful, coordinated care.</p>
+      <div class="doctor-uni-logo">
+        <img src="http://ronalds422.sg-host.com/wp-content/uploads/2026/04/Harvard_University_logo.svg.png" alt="Harvard University">
       </div>
     </div>
-  </section>
-
-  <!-- Contact / Reservation -->
-  <section id="contact" class="contact section">
-    <div class="container">
-      <div class="contact-info">
-        <span class="section-label">Visit Us</span>
-        <h2>Reserve Your Table</h2>
-        <ul class="info-list">
-          <li><span>&#128205;</span> 42 Via Roma, Florence District, NY 10001</li>
-          <li><span>&#128222;</span> (212) 555-0198</li>
-          <li><span>&#9993;</span> hello@labellacucina.com</li>
-          <li><span>&#128336;</span> Mon–Fri: 11am – 10pm &nbsp;|&nbsp; Sat–Sun: 10am – 11pm</li>
-        </ul>
+    <div class="doctor-card">
+      <div class="doctor-photo-wrap">
+        <img src="http://ronalds422.sg-host.com/wp-content/uploads/2026/03/schwartz-photo-5.jpg" alt="Dr. Racanello">
       </div>
-      <form class="reservation-form" id="reservation-form">
-        <h3>Book a Table</h3>
-        <div class="form-row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Email Address" required />
-        </div>
-        <div class="form-row">
-          <input type="date" id="res-date" required />
-          <input type="time" id="res-time" required />
-        </div>
-        <div class="form-row">
-          <select required>
-            <option value="" disabled selected>Number of Guests</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5+</option>
-          </select>
-        </div>
-        <textarea placeholder="Special requests (optional)"></textarea>
-        <button type="submit" class="btn">Confirm Reservation</button>
-        <p class="form-success" id="form-success">Thank you! We will confirm your reservation shortly.</p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-brand">La Bella Cucina</div>
-      <p>&copy; 2026 La Bella Cucina. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Yelp</a>
+      <div class="doctor-name">Dr. Racanello</div>
+      <div class="doctor-cred">Columbia-Trained &bull; Neuropsychology</div>
+      <p class="doctor-bio">Neuropsychologist specializing in comprehensive evaluations for children and adolescents with complex learning, attention, and emotional profiles.</p>
+      <div class="doctor-uni-logo">
+        <img src="http://ronalds422.sg-host.com/wp-content/uploads/2026/04/Columbia_University_1754.svg-scaled.png" alt="Columbia University">
       </div>
     </div>
-  </footer>
+  </div>
+  <div style="margin-top:56px;">
+    <p class="section-body reveal">Many families come to us after working with <strong>multiple professionals</strong>—each offering a different perspective, but without a clear, unified plan.</p>
+    <p class="section-body reveal" style="transition-delay:0.1s">At Place of Mind, we do things differently. We've brought together Ivy League–trained specialists in child psychiatry, neuropsychology, and cognitive behavioral therapy—working collaboratively, in direct communication with one another.</p>
+    <p class="section-closing reveal" style="transition-delay:0.2s">No more fragmented care. Just clarity, coordination, and a clear path forward.</p>
+  </div>
+</section>
 
-  <script src="app.js"></script>
+<!-- WHY CHOOSE -->
+<section class="why-choose">
+  <p class="section-eyebrow reveal">Why Families Choose Us</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">Why Families <em>Choose</em> Place of Mind</h2>
+  <div class="gold-rule reveal" style="transition-delay:0.15s"></div>
+  <p class="why-intro reveal" style="transition-delay:0.2s">We know you have options. Here's why thoughtful families choose a collaborative approach at Place of Mind.</p>
+  <div class="why-row-top stagger">
+    <div class="why-card">
+      <i class="uil uil-search-alt why-card-icon"></i>
+      <div class="why-card-title">Careful, Thorough Evaluations</div>
+      <p class="why-card-body">We take the time to understand your child fully—before making recommendations.</p>
+    </div>
+    <div class="why-card">
+      <i class="uil uil-users-alt why-card-icon"></i>
+      <div class="why-card-title">A Coordinated Team Approach</div>
+      <p class="why-card-body">Our specialists communicate directly, ensuring alignment across all aspects of care.</p>
+    </div>
+  </div>
+  <div class="why-row-bottom stagger">
+    <div class="why-card">
+      <i class="uil uil-capsule why-card-icon"></i>
+      <div class="why-card-title">Thoughtful Medication Management</div>
+      <p class="why-card-body">Medication, when used, is carefully considered, clearly explained, and closely monitored.</p>
+    </div>
+    <div class="why-card">
+      <i class="uil uil-heart-sign why-card-icon"></i>
+      <div class="why-card-title">Parents as Partners</div>
+      <p class="why-card-body">You are part of every step. We work with you—not just for you.</p>
+    </div>
+    <div class="why-card">
+      <i class="uil uil-compass why-card-icon"></i>
+      <div class="why-card-title">Clarity and Direction</div>
+      <p class="why-card-body">You leave with a clear understanding of your child and a plan you feel confident in.</p>
+    </div>
+  </div>
+  <div class="cta-center reveal">
+    <a href="https://ronalds422.sg-host.com/contact/" class="btn-blue">Get Clarity on Your Child's Struggles</a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <p class="section-eyebrow reveal">Our Process</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">A Clear, <em>Thoughtful</em> Process</h2>
+  <div class="gold-rule reveal" style="transition-delay:0.15s"></div>
+  <p class="section-body reveal" style="transition-delay:0.2s">We aim to make this process structured, collaborative, and easy to understand from the very beginning.</p>
+  <div class="process-steps stagger" id="processSteps">
+    <div class="process-connector" id="processLine"></div>
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <div class="step-title">Initial Free Consultation</div>
+      <p class="step-body">We begin by listening carefully and understanding your concerns. This conversation helps determine whether an evaluation makes sense—and if so, which type would be most helpful.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <div class="step-title">Comprehensive Evaluation</div>
+      <p class="step-body">We ask parents, teachers, and when appropriate, your child, to complete rating scales in advance. The evaluation typically lasts 2 to 2.5 hours — integrating all information into a clear, actionable plan.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <div class="step-title">Collaboration &amp; Ongoing Care</div>
+      <p class="step-body">Care does not happen in isolation. We collaborate closely within our team, and when helpful, with therapists, schools, and other providers—ensuring alignment and continuity.</p>
+    </div>
+  </div>
+  <p class="process-reinforcer reveal">"You will not leave with more questions—you will leave with clarity."</p>
+  <div class="cta-center reveal" style="margin-top:50px;transition-delay:0.2s">
+    <a href="https://ronalds422.sg-host.com/contact/" class="btn-blue">Schedule a Free Consultation</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-eyebrow reveal">In Their Own Words</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">What <em>Families</em> Are Saying</h2>
+  <div class="gold-rule reveal" style="transition-delay:0.15s"></div>
+  <p class="testimonial-intro reveal" style="transition-delay:0.2s">Families often come to us feeling overwhelmed and uncertain. They leave with clarity, direction, and a renewed sense of confidence.</p>
+  <div class="testimonials-grid stagger">
+    <div class="testimonial-card">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="testimonial-text">We came to Dr. Schwartz during a very difficult time for our son. From the first call, we felt understood and supported. Over the years, he has cared for not just our son, but our entire family. He truly listens, and his approach is always thoughtful, personalized, and deeply respectful.</p>
+      <div class="testimonial-attr">— H.S., A Parent</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="testimonial-text">We came to Dr. Schwartz when our six-year-old daughter was struggling with severe anxiety, aggressive tantrums, and difficulties at school and home. He identified anxiety and ADHD and created a treatment plan that has been truly life-changing.</p>
+      <div class="testimonial-attr">— E., A Parent</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="testimonial-text">We came feeling overwhelmed and unsure of what was really going on with our child, despite seeing other professionals. He took the time to truly understand our child, and for the first time, things clicked. We finally had clarity—and a clear path forward.</p>
+      <div class="testimonial-attr">— Anonymous, A Parent</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <p class="section-eyebrow reveal">Our Philosophy</p>
+  <h2 class="section-title reveal" style="transition-delay:0.1s">A Thoughtful <em>Approach</em> to Care</h2>
+  <div class="gold-rule reveal" style="transition-delay:0.15s"></div>
+  <p class="philosophy-body reveal" style="transition-delay:0.2s">At Place of Mind, we believe that behind every symptom is a story. Taking the time to understand that story leads to better outcomes—not just in treatment, but in how children see themselves and how families move forward.</p>
+  <p class="philosophy-body reveal" style="transition-delay:0.3s">Our approach is grounded in careful listening, thoughtful collaboration, and a deep respect for how complex and overwhelming these challenges can feel. We understand this not only professionally, but personally—and that perspective shapes the care we provide every day.</p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2 class="final-cta-headline reveal">You've been searching for answers. Let's help you <em>finally understand</em> what's going on—and what to do next.</h2>
+  <div class="cta-buttons reveal" style="transition-delay:0.15s">
+    <a href="https://ronalds422.sg-host.com/contact/" class="btn-navy">Schedule a Free Consultation</a>
+    <a href="https://ronalds422.sg-host.com/contact/" class="btn-blue">Request an Evaluation</a>
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+
+function positionProcessLine() {
+  const steps = document.querySelectorAll('.step-number');
+  const line = document.getElementById('processLine');
+  const container = document.getElementById('processSteps');
+  if (!steps.length || !line || !container || steps.length < 2) return;
+  const first = steps[0].getBoundingClientRect();
+  const last = steps[steps.length - 1].getBoundingClientRect();
+  const rect = container.getBoundingClientRect();
+  line.style.left = (first.left + first.width / 2 - rect.left) + 'px';
+  line.style.width = (last.left + last.width / 2 - first.left - first.width / 2) + 'px';
+}
+window.addEventListener('load', positionProcessLine);
+window.addEventListener('resize', positionProcessLine);
+</script>
 </body>
 </html>
