@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "my-wordpress-elementor": {
+      "type": "http",
+      "url": "https://ronalds462.sg-host.com/wp-json/elementor/mcp/",
+      "headers": {
+        "Authorization": "Basic ${WP_ELEMENTOR_AUTH}"
+      }
+    }
+  }
+}
